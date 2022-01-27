@@ -1,0 +1,42 @@
+#ifndef RESTServer_VERSION_H
+#define RESTServer_VERSION_H
+
+#include <string>
+#include <sstream>
+
+/// The current svn revision.
+#define RESTServer_BRANCH "@VCS_BRANCH@"
+#define RESTServer_TAG "@VCS_TAG@"
+#define RESTServer_REVISION "@VCS_REVISION@"
+
+/// Information about the current RESTServer version.
+class RESTServerVersion {
+public:
+  /// @return the current major version of RESTServer.
+  static int getBranch()
+  {
+    return RESTServer_BRANCH;
+  }
+
+  /// @return the current minor version of RESTServer.
+  static int getTag()
+  {
+    return RESTServer_TAG;
+  }
+
+  /// @return the current patch level of RESTServer.
+  static int getRevision()
+  {
+    return RESTServer_REVISION;
+  }
+
+  /// @return the current RESTServer version (MM.mm.pp).
+  static std::string getString()
+  {
+    std::ostringstream version;
+    version << "Branch: " << RESTServer_BRANCH << ' Tag: ' << RESTServer_TAG << ' Revision: ' << RESTServer_REVISION;
+    return version.str();
+  }
+};
+
+#endif // RESTServer_VERSION_H
